@@ -1,7 +1,5 @@
 package geometri;
-
 import java.awt.*;
-import java.math.*;
 
 /**
  * A Circle with a size, position and color.
@@ -46,14 +44,14 @@ public class Circle extends RectangularForm implements GeometricalForm {
      * {@inheritDoc}
      */
     public int getPerimeter () {
-        return 2 * 3 * getWidth()/2  ;
+        return (int)(2 * Math.PI * getWidth()/2)  ;
     }
 
     /**
      * {@inheritDoc}
      */
     public int getArea () {
-        return getWidth()/2*getWidth()/2*3;
+        return (int)(getWidth()/2*getWidth()/2*Math.PI);
     }
 
     /**
