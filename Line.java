@@ -78,6 +78,7 @@ public class Line extends RectangularForm implements GeometricalForm {
 
     /**
      * {@inheritDoc}
+     * @override
      */
     public boolean equals (Object otherObject) {
         if (this == otherObject) {
@@ -89,11 +90,12 @@ public class Line extends RectangularForm implements GeometricalForm {
         }
         Line other = (Line) otherObject;
         return this.equals(other) && this.getColor() == other.getColor() && this.getHeight() == other.getHeight()
-                && this.getWidth() == other.getWidth();
+                && this.getWidth() == other.getWidth() && this.upwardLine == other.upwardLine;
     }
 
     /**
      * {@inheritDoc}
+     * @override
      */
     public int hashCode() {
         return 7*c.hashCode() + 9 * getHeight() + 9 * getWidth();

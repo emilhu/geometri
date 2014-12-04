@@ -66,23 +66,20 @@ public class Circle extends RectangularForm implements GeometricalForm {
 
     /**
      * {@inheritDoc}
+     * @override
      */
     public void fill( Graphics g ) {
         g.drawOval(x,y,width,height);
         g.setColor(c);
     }
 
+    /**
+     * {@inheritDoc}
+     * @override
+     */
     public boolean equals (Object otherObject) {
-        if (this == otherObject) {
-            return true;
-        }   else if (otherObject == null)    {
-            return false;
-        }   else if (otherObject.getClass() != this.getClass()) {
-            return false;
-        }
         Circle other = (Circle) otherObject;
-        return this.equals(other) && this.getColor() == other.getColor() && this.getHeight() == other.getHeight()
-                && this.getWidth() == other.getWidth();
+        return super.equals(other);
     }
 
     public int hashCode() {

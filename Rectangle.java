@@ -76,22 +76,16 @@ public class Rectangle extends RectangularForm implements GeometricalForm {
 
     /**
      * {@inheritDoc}
+     * @override
      */
     public boolean equals (Object otherObject) {
-        if (this == otherObject) {
-            return true;
-        }   else if (otherObject == null)    {
-            return false;
-        }   else if (otherObject.getClass() != this.getClass()) {
-            return false;
-        }
         Rectangle other = (Rectangle) otherObject;
-        return this.equals(other) && this.getColor() == other.getColor() && this.getHeight() == other.getHeight()
-        && this.getWidth() == other.getWidth();
+        return super.equals(other);
     }
 
     /**
      * {@inheritDoc}
+     * @override
      */
     public int hashCode() {
         return 3*c.hashCode() + 7 * getHeight() + 9 * getWidth();

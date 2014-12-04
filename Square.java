@@ -73,22 +73,16 @@ public class Square extends RectangularForm implements GeometricalForm {
 
     /**
      * {@inheritDoc}
+     * @override
      */
     public boolean equals (Object otherObject) {
-        if (this == otherObject) {
-            return true;
-        }   else if (otherObject == null)    {
-            return false;
-        }   else if (otherObject.getClass() != this.getClass()) {
-            return false;
-        }
         Square other = (Square) otherObject;
-        return this.equals(other) && this.getColor() == other.getColor() && this.getHeight() == other.getHeight()
-                && this.getWidth() == other.getWidth();
+        return super.equals(other);
     }
 
     /**
      * {@inheritDoc}
+     * @override
      */
     public int hashCode() {
         return 31*c.hashCode() + 13 * getHeight() + 9 * getWidth();

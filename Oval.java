@@ -45,7 +45,9 @@ public class Oval extends RectangularForm implements GeometricalForm {
      * {@inheritDoc}
      */
     public int getPerimeter () {
-        return (int)getOvalCircumference();
+        int a = getHeight();
+        int b = getWidth();
+        return (int)(Math.PI*Math.abs(3 *(a + b) - Math.sqrt((3*a + b)*(a + 3*b))));
     }
 
     /**
@@ -53,12 +55,6 @@ public class Oval extends RectangularForm implements GeometricalForm {
      */
     public int getArea () {
         return (int)(Math.PI * getHeight()/2 * getWidth()/2);
-    }
-
-    public double getOvalCircumference () {
-        int a = getHeight();
-        int b = getWidth();
-        return (Math.PI*Math.abs(3 *(a + b) - Math.sqrt((3*a + b)*(a + 3*b))));
     }
 
     /**
@@ -81,22 +77,16 @@ public class Oval extends RectangularForm implements GeometricalForm {
 
     /**
      * {@inheritDoc}
+     * @override
      */
     public boolean equals (Object otherObject) {
-        if (this == otherObject) {
-            return true;
-        }   else if (otherObject == null)    {
-            return false;
-        }   else if (otherObject.getClass() != this.getClass()) {
-            return false;
-        }
         Oval other = (Oval) otherObject;
-        return this.equals(other) && this.getColor() == other.getColor() && this.getHeight() == other.getHeight()
-                && this.getWidth() == other.getWidth();
+        return super.equals(other);
     }
 
     /**
      * {@inheritDoc}
+     * @override
      */
     public int hashCode() {
         return 13*c.hashCode() + 7 * getHeight() + 9 * getWidth();

@@ -101,4 +101,20 @@ public abstract class RectangularForm implements GeometricalForm {
         this.y = y;
     }
 
+    /**
+     * {@inheritDoc}
+     * @override
+     */
+    public boolean equals (Object otherObject) {
+        if (this == otherObject) {
+            return true;
+        }   else if (otherObject == null)    {
+            return false;
+        }   else if (otherObject.getClass() != this.getClass()) {
+            return false;
+        }
+        GeometricalForm other = (GeometricalForm) otherObject;
+        return this.equals(other) && this.getColor() == other.getColor() && this.getHeight() == other.getHeight()
+                && this.getWidth() == other.getWidth();
+    }
 }
