@@ -28,6 +28,7 @@ public class Line extends RectangularForm implements GeometricalForm {
         this.width = Math.abs(x1-x2);
         this.height = Math.abs(y1-y2);
         this.upwardLine = y > y2;
+        this.c = c;
     }
     /**
      * Creates a Line from two GeometricalForms and a color.
@@ -40,6 +41,7 @@ public class Line extends RectangularForm implements GeometricalForm {
         this.y = f1.getY();
         this.width = f2.getWidth();
         this.height = f2.getHeight();
+        this.c = c;
     }
     /**
      * {@inheritDoc}
@@ -81,15 +83,8 @@ public class Line extends RectangularForm implements GeometricalForm {
      * @override
      */
     public boolean equals (Object otherObject) {
-        if (this == otherObject) {
-            return true;
-        }   else if (otherObject == null)    {
-            return false;
-        }   else if (otherObject.getClass() != this.getClass()) {
-            return false;
-        }
         Line other = (Line) otherObject;
-        return this.equals(other) && this.getColor() == other.getColor() && this.getHeight() == other.getHeight()
+        return super.equals(other) && this.getHeight() == other.getHeight()
                 && this.getWidth() == other.getWidth() && this.upwardLine == other.upwardLine;
     }
 

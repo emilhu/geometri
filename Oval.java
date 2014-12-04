@@ -81,7 +81,8 @@ public class Oval extends RectangularForm implements GeometricalForm {
      */
     public boolean equals (Object otherObject) {
         Oval other = (Oval) otherObject;
-        return super.equals(other);
+        return super.equals(other) && this.getHeight() == other.getHeight()
+                && this.getWidth() == other.getWidth();
     }
 
     /**

@@ -68,15 +68,8 @@ public class Point extends RectangularForm implements GeometricalForm {
      * @override
      */
     public boolean equals (Object otherObject) {
-        if (this == otherObject) {
-            return true;
-        }   else if (otherObject == null)    {
-            return false;
-        }   else if (otherObject.getClass() != this.getClass()) {
-            return false;
-        }
         Point other = (Point) otherObject;
-        return this.equals(other) && this.getColor() == other.getColor();
+        return super.equals(other);
     }
 
     /**

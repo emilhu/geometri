@@ -114,7 +114,6 @@ public abstract class RectangularForm implements GeometricalForm {
             return false;
         }
         GeometricalForm other = (GeometricalForm) otherObject;
-        return this.equals(other) && this.getColor() == other.getColor() && this.getHeight() == other.getHeight()
-                && this.getWidth() == other.getWidth();
+        return this.equals(other) && this.getColor() == other.getColor();
     }
 }

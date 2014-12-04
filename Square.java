@@ -77,7 +77,8 @@ public class Square extends RectangularForm implements GeometricalForm {
      */
     public boolean equals (Object otherObject) {
         Square other = (Square) otherObject;
-        return super.equals(other);
+        return super.equals(other) && this.getHeight() == other.getHeight()
+                && this.getWidth() == other.getWidth();
     }
 
     /**

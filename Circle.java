@@ -79,7 +79,8 @@ public class Circle extends RectangularForm implements GeometricalForm {
      */
     public boolean equals (Object otherObject) {
         Circle other = (Circle) otherObject;
-        return super.equals(other);
+        return super.equals(other) && this.getHeight() == other.getHeight()
+                && this.getWidth() == other.getWidth();
     }
 
     public int hashCode() {
