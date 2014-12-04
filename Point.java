@@ -1,6 +1,5 @@
 package geometri;
 import java.awt.*;
-
 /**
  * A Point with a position and color.
  *
