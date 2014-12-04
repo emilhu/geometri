@@ -4,21 +4,21 @@ import java.awt.*;
 
 /**
  * An Oval with a size, position and color.
- * 
+ *
  * @author Emil Hukic
  * @author Tobias Hallberg
  */
 public class Oval extends RectangularForm implements GeometricalForm {
 
-	/**
-	 * Creates an Oval with a position, height, width and color.
-	 * @param x The X coordinate
-	 * @param y The Y coordinate
-	 * @param width The width
-	 * @param height The height
-	 * @param c The Color
-	 * @throws IllegalPositionException Is thrown if trying to set a negative position
-	 */
+    /**
+     * Creates an Oval with a position, height, width and color.
+     * @param x The X coordinate
+     * @param y The Y coordinate
+     * @param width The width
+     * @param height The height
+     * @param c The Color
+     * @throws IllegalPositionException Is thrown if trying to set a negative position
+     */
     public Oval(int x, int y, int width, int height, Color c) throws IllegalPositionException {
         this.x = x;
         this.y = y;
@@ -27,14 +27,13 @@ public class Oval extends RectangularForm implements GeometricalForm {
         this.c = c;
     }
 
-
     /**
-	  * Creates an Oval with the same position as an already given GeometricalForm, a new height, width and color.
-	  * @param f A GeometricalForm
-	  * @param width The width
-	  * @param height The height
-	  * @param c The color
-	  */
+     * Creates an Oval with the same position as an already given GeometricalForm, a new height, width and color.
+     * @param f A GeometricalForm
+     * @param width The width
+     * @param height The height
+     * @param c The color
+     */
     public Oval(GeometricalForm f, int width, int height, Color c) {
         x = f.getX();
         y = f.getY();
@@ -43,40 +42,64 @@ public class Oval extends RectangularForm implements GeometricalForm {
         this.c = c;
     }
 
-
     /**
-   	 * {@inheritDoc}
-   	 */
+     * {@inheritDoc}
+     */
     public int getPerimeter () {
-        return 0;
+        return (int)getOvalCircumference();
     }
 
     /**
-   	 * {@inheritDoc}
-   	 */
+     * {@inheritDoc}
+     */
     public int getArea () {
-        return 0;
+        return (int)(Math.PI * getHeight()/2 * getWidth()/2);
     }
-    
+
+    public double getOvalCircumference () {
+        int a = getHeight();
+        int b = getWidth();
+        return (Math.PI*Math.abs(3 *(a + b) - Math.sqrt((3*a + b)*(a + 3*b))));
+    }
+
     /**
-   	 * {@inheritDoc}
-   	 */
-    public int compareTo( GeometricalForm f ) {
-        if (this.getArea() == f.getArea()) {
-            return 0;
-        }  else if (this.getArea() > f.getArea()) {
-            return 1;
-        }   else {
+     * {@inheritDoc}
+     */
+    public int compareTo(GeometricalForm f) {
+        if ( f.getClass() != this.getClass()) {
             return -1;
         }
+        return comparison(f);
     }
 
-
     /**
-   	 * {@inheritDoc}
-   	 */
+     * {@inheritDoc}
+     */
     public void fill( Graphics g ) {
         g.drawOval(x,y,width,height);
         g.setColor(c);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public boolean equals (Object otherObject) {
+        if (this == otherObject) {
+            return true;
+        }   else if (otherObject == null)    {
+            return false;
+        }   else if (otherObject.getClass() != this.getClass()) {
+            return false;
+        }
+        Oval other = (Oval) otherObject;
+        return this.equals(other) && this.getColor() == other.getColor() && this.getHeight() == other.getHeight()
+                && this.getWidth() == other.getWidth();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public int hashCode() {
+        return 13*c.hashCode() + 7 * getHeight() + 9 * getWidth();
     }
 }

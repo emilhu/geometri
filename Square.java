@@ -4,20 +4,20 @@ import java.awt.*;
 
 /**
  * A Square with a size, position and color.
- * 
+ *
  * @author Emil Hukic
  * @author Tobias Hallberg
  */
 public class Square extends RectangularForm implements GeometricalForm {
 
-	/**
-	 * Creates a Square from a position, size and color.
-	 * @param x X coordinate
-	 * @param y Y coordinate
-	 * @param side The size
-	 * @param c The color
-	 * @throws IllegalPositionException Is thrown if trying to set a negative position
-	 */
+    /**
+     * Creates a Square from a position, size and color.
+     * @param x X coordinate
+     * @param y Y coordinate
+     * @param side The size
+     * @param c The color
+     * @throws IllegalPositionException Is thrown if trying to set a negative position
+     */
     public Square(int x, int y, int side, Color c) throws IllegalPositionException {
         this.x = x;
         this.y = y;
@@ -27,11 +27,11 @@ public class Square extends RectangularForm implements GeometricalForm {
     }
 
     /**
-	 * Creates a Square with the same position as an already given GeometricalForm, a new size, and a color.
-	 * @param f A GeometricalForm
-	 * @param side The size
-	 * @param c The color
-	 */
+     * Creates a Square with the same position as an already given GeometricalForm, a new size, and a color.
+     * @param f A GeometricalForm
+     * @param side The size
+     * @param c The color
+     */
     public Square(GeometricalForm f, int side, Color c) {
         x = f.getX();
         y = f.getY();
@@ -41,40 +41,57 @@ public class Square extends RectangularForm implements GeometricalForm {
     }
 
     /**
-	 * {@inheritDoc}
-	 */
+     * {@inheritDoc}
+     */
     public int getPerimeter () {
         return height*4;
     }
 
     /**
-	 * {@inheritDoc}
-	 */
+     * {@inheritDoc}
+     */
     public int getArea () {
         return height*height;
     }
 
     /**
-	 * {@inheritDoc}
-	 */
-    public int compareTo( GeometricalForm f ) {
-        if (this.getArea() == f.getArea()) {
-            return 0;
-        }  else if (this.getArea() > f.getArea()) {
-            return 1;
-        }   else {
+     * {@inheritDoc}
+     */
+    public int compareTo(GeometricalForm f) {
+        if ( f.getClass() != this.getClass()) {
             return -1;
         }
+        return comparison(f);
     }
 
     /**
-	 * {@inheritDoc}
-	 */
+     * {@inheritDoc}
+     */
     public void fill( Graphics g ) {
-        g.drawLine(x, y, x+width, y );
-        g.drawLine(x, y, x, y+width);
-        g.drawLine(x+width, y, x+width, y+width);
-        g.drawLine(x, y+width, x+width, y+width);
+        g.drawRect(x, y, width, height);
         g.setColor(c);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public boolean equals (Object otherObject) {
+        if (this == otherObject) {
+            return true;
+        }   else if (otherObject == null)    {
+            return false;
+        }   else if (otherObject.getClass() != this.getClass()) {
+            return false;
+        }
+        Square other = (Square) otherObject;
+        return this.equals(other) && this.getColor() == other.getColor() && this.getHeight() == other.getHeight()
+                && this.getWidth() == other.getWidth();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public int hashCode() {
+        return 31*c.hashCode() + 13 * getHeight() + 9 * getWidth();
     }
 }
