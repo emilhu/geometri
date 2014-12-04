@@ -68,9 +68,9 @@ public abstract class RectangularForm implements GeometricalForm {
     }
 
     /**
-     * compares the area and perimeter of the GeometricalForm and the given object
+     * Compares the area and perimeter of the GeometricalForm and the given object
      * @param f A GeometricalForm
-     * @return
+     * @return -1, 0, or 1 as this GeometricalForm is less than, equal to, or greater than the specified GeometricalForm.
      */
     public int comparison (GeometricalForm f)   {
         if (this.getArea() > f.getArea()) {
@@ -103,8 +103,8 @@ public abstract class RectangularForm implements GeometricalForm {
 
     /**
      * {@inheritDoc}
-     * @override
      */
+    @Override
     public boolean equals (Object otherObject) {
         if (this == otherObject) {
             return true;

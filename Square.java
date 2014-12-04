@@ -73,8 +73,8 @@ public class Square extends RectangularForm implements GeometricalForm {
 
     /**
      * {@inheritDoc}
-     * @override
      */
+    @Override
     public boolean equals (Object otherObject) {
         Square other = (Square) otherObject;
         return super.equals(other) && this.getHeight() == other.getHeight()
@@ -83,8 +83,8 @@ public class Square extends RectangularForm implements GeometricalForm {
 
     /**
      * {@inheritDoc}
-     * @override
      */
+    @Override
     public int hashCode() {
         return 31*c.hashCode() + 13 * getHeight() + 9 * getWidth();
     }

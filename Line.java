@@ -80,8 +80,8 @@ public class Line extends RectangularForm implements GeometricalForm {
 
     /**
      * {@inheritDoc}
-     * @override
      */
+    @Override
     public boolean equals (Object otherObject) {
         Line other = (Line) otherObject;
         return super.equals(other) && this.getHeight() == other.getHeight()
@@ -90,9 +90,9 @@ public class Line extends RectangularForm implements GeometricalForm {
 
     /**
      * {@inheritDoc}
-     * @override
      */
+    @Override
     public int hashCode() {
-        return 7*c.hashCode() + 9 * getHeight() + 9 * getWidth();
+        return 7*c.hashCode() + 9 * getHeight() + 43 * getWidth();
     }
 }

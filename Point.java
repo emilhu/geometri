@@ -65,8 +65,8 @@ public class Point extends RectangularForm implements GeometricalForm {
 
     /**
      * {@inheritDoc}
-     * @override
      */
+    @Override
     public boolean equals (Object otherObject) {
         Point other = (Point) otherObject;
         return super.equals(other);
@@ -74,8 +74,8 @@ public class Point extends RectangularForm implements GeometricalForm {
 
     /**
      * {@inheritDoc}
-     * @override
      */
+    @Override
     public int hashCode() {
         return 13*c.hashCode();
     }

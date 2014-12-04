@@ -66,7 +66,6 @@ public class Circle extends RectangularForm implements GeometricalForm {
 
     /**
      * {@inheritDoc}
-     * @override
      */
     public void fill( Graphics g ) {
         g.drawOval(x,y,width,height);
@@ -75,14 +74,18 @@ public class Circle extends RectangularForm implements GeometricalForm {
 
     /**
      * {@inheritDoc}
-     * @override
      */
+    @Override
     public boolean equals (Object otherObject) {
         Circle other = (Circle) otherObject;
         return super.equals(other) && this.getHeight() == other.getHeight()
                 && this.getWidth() == other.getWidth();
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public int hashCode() {
         return 23*c.hashCode() + 13 * getHeight() + 31 * getWidth();
     }

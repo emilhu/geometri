@@ -76,8 +76,8 @@ public class Rectangle extends RectangularForm implements GeometricalForm {
 
     /**
      * {@inheritDoc}
-     * @override
      */
+    @Override
     public boolean equals (Object otherObject) {
         Rectangle other = (Rectangle) otherObject;
         return super.equals(other) && this.getHeight() == other.getHeight()
@@ -86,8 +86,8 @@ public class Rectangle extends RectangularForm implements GeometricalForm {
 
     /**
      * {@inheritDoc}
-     * @override
      */
+    @Override
     public int hashCode() {
         return 3*c.hashCode() + 7 * getHeight() + 9 * getWidth();
     }

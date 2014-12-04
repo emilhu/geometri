@@ -77,8 +77,8 @@ public class Oval extends RectangularForm implements GeometricalForm {
 
     /**
      * {@inheritDoc}
-     * @override
      */
+    @Override
     public boolean equals (Object otherObject) {
         Oval other = (Oval) otherObject;
         return super.equals(other) && this.getHeight() == other.getHeight()
@@ -87,8 +87,8 @@ public class Oval extends RectangularForm implements GeometricalForm {
 
     /**
      * {@inheritDoc}
-     * @override
      */
+    @Override
     public int hashCode() {
         return 13*c.hashCode() + 7 * getHeight() + 9 * getWidth();
     }
